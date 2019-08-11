@@ -20,7 +20,7 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <revision>1.0.0-SNAPSHOT</revision>
         <wsmessenger.version>1.1.0</wsmessenger.version>
-        <tamboot.version>1.4.0.COBROO</tamboot.version>
+        <tamboot.version>1.0.0.SNAPSHOT</tamboot.version>
     </properties>
 
     <dependencyManagement>

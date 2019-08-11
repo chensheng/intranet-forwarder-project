@@ -7,4 +7,4 @@ tamboot:
       forwards:
         - clientId: tamboot-local
           from: /sample-http/
-          to: http://localhost:7071/s
+          to: http://localhost:7071/

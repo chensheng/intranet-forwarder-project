@@ -1,6 +1,7 @@
 package com.tamboot.intranetforwarder.client.listener;
 
 import com.tamboot.common.tools.base.ExceptionUtil;
+import com.tamboot.common.tools.text.EncodeUtil;
 import com.tamboot.common.tools.text.TextUtil;
 import com.tamboot.intranetforwarder.client.http.PoolingHttpClient;
 import com.tamboot.intranetforwarder.common.message.HttpRequestMessage;
@@ -101,6 +102,7 @@ public class HttpRequestMessageListener extends ClientMessageListener<HttpReques
         RequestBuilder requestBuilder = RequestBuilder.create(request.getMethod());
         URI uri = setURI(requestBuilder, request);
         setQueryParams(requestBuilder, uri);
+        setAuthorizationHeader(requestBuilder, uri);
         setHeaders(requestBuilder, request);
         setBody(requestBuilder, request);
         return requestBuilder.build();
@@ -125,6 +127,16 @@ public class HttpRequestMessageListener extends ClientMessageListener<HttpReques
         for (NameValuePair queryParam : queryParams) {
             requestBuilder.addParameter(queryParam);
         }
+    }
+
+    private void setAuthorizationHeader(RequestBuilder requestBuilder, URI uri) {
+        String userInfo = uri.getUserInfo();
+        if (TextUtil.isBlank(userInfo)) {
+            return;
+        }
+
+        String authorization = "Basic " + EncodeUtil.encodeBase64(userInfo.getBytes());
+        requestBuilder.setHeader("Authorization", authorization);
     }
 
     private void setHeaders(RequestBuilder requestBuilder, HttpRequestMessageBody request) {

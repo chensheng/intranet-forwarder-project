@@ -1,0 +1,7 @@
+server:
+  port: 8181
+tamboot:
+  intranet-forwarder:
+    client:
+      clientId: tamboot-local
+      serverUrl: ws://127.0.0.1:2046

@@ -1,0 +1,10 @@
+server:
+  port: 8080
+tamboot:
+  intranet-forwarder:
+    server:
+      serverPort: 2046
+      forwards:
+        - clientId: tamboot-local
+          from: /sample-http/
+          to: http://localhost:7071/s

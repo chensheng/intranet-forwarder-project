@@ -3,5 +3,5 @@ server:
 tamboot:
   intranet-forwarder:
     client:
-      clientId: tamboot-local
+      clientId: tamboot-home
       serverUrl: ws://127.0.0.1:2046
